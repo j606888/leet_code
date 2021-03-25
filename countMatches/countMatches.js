@@ -5,13 +5,13 @@
  * @return {number}
  */
 var countMatches = function (items, ruleKey, ruleValue) {
-  ruleMaps = ['type', 'color', 'name']
-  ruleIndex = ruleMaps.indexOf(ruleKey)
-  count = 0
-  items.forEach(item => {
-    console.log(item)
-    if (item[ruleIndex] == ruleValue) count++
-  })
+  ruleMaps = {
+    'type': 0,
+    'color': 1,
+    'name': 2
+  }
+  
+  items.reduce((ans, item) => item[ruleMaps[ruleKey]] === ruleValue ? ans + 1 : ans, 0)
 
   return count
 };
